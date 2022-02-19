@@ -16,14 +16,12 @@ def calculate():
     s3 = value[k]
     s0 = str(s1) + s3 + str(s2)
     res = eval(s0)
-    value_1 = calc1.get()
-    calc1.delete(0, tk.END)
+    value_1 = int(combo2.get())
     calc.insert(0, system_convert.convert_10_to_n(res, value_1))
 
 
 def clear():
     calc.delete(0, tk.END)
-    calc1.delete(0, tk.END)
 
 
 def add_operation(operation):
@@ -78,8 +76,12 @@ calc = tk.Entry(win, justify=tk.RIGHT, font=('Arial', 15), width=15)
 calc.grid(row=2, column=0, columnspan=3, sticky='we', padx=5)
 
 
-calc1 = tk.Entry(win, justify=tk.RIGHT, font=('Arial', 15), width=15)
-calc1.grid(row=5, column=1, columnspan=3, sticky='we', padx=5)
+labelTop2 = tk.Label(win, text='В какой системе счисления хотите получить ответ:')
+labelTop2.grid(row=5, column=1, sticky='wens', padx=5, pady=7)
+
+
+combo2 = ttk.Combobox(win, values=nums)
+combo2.grid(row=6, column=1, sticky='wens', padx=5, pady=7)
 
 
 operation_button('+').grid(row=3, column=0, sticky='wens', padx=5, pady=7)
