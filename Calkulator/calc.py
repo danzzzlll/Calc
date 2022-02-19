@@ -1,19 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-
-#max - 16 system
-def convert_base(num, to_base=10, from_base=10):
-    # first convert to decimal number
-    if isinstance(num, str):
-        n = int(num, from_base)
-    else:
-        n = int(num)
-    # now convert decimal to 'to_base' base
-    alphabet = "0123456789ABCDEF"
-    if n < to_base:
-        return alphabet[n]
-    else:
-        return convert_base(n // to_base, to_base) + alphabet[n % to_base]
+import system_convert
 
 
 def calculate():
@@ -24,14 +11,14 @@ def calculate():
     k3 = value.find('*')
     k4 = value.find('/')
     k = max(k1, k2, k3, k4)
-    s1 = convert_base(value[:k], from_base=int(combo.get()))
-    s2 = convert_base(value[k+1:], from_base=int(combo.get()))
+    s1 = system_convert.convert_n_to_10(value[:k], int(combo.get()))
+    s2 = system_convert.convert_n_to_10(value[k+1:], int(combo1.get()))
     s3 = value[k]
-    s0 = s1 + s3 + s2
+    s0 = str(s1) + s3 + str(s2)
     res = eval(s0)
     value_1 = calc1.get()
     calc1.delete(0, tk.END)
-    calc.insert(0, convert_base(res, to_base=int(value_1)))
+    calc.insert(0, system_convert.convert_10_to_n(res, value_1))
 
 
 def clear():
@@ -74,7 +61,8 @@ labelTop = tk.Label(win, text='В какой системе счисления �
 labelTop.grid(row=0, column=0, sticky='wens', padx=5, pady=7)
 
 
-combo = ttk.Combobox(win, values=(2, 8, 16))
+nums = [i for i in range(2, 17)]
+combo = ttk.Combobox(win, values=nums)
 combo.grid(row=1, column=0, sticky='wens', padx=5, pady=7)
 
 
@@ -82,7 +70,7 @@ labelTop1 = tk.Label(win, text='В какой системе счисления 
 labelTop1.grid(row=0, column=1, sticky='wens', padx=5, pady=7)
 
 
-combo1 = ttk.Combobox(win, values=(2, 8, 16))
+combo1 = ttk.Combobox(win, values=nums)
 combo1.grid(row=1, column=1, sticky='wens', padx=5, pady=7)
 
 
