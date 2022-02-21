@@ -38,7 +38,7 @@ def add_operation(operation):
 
 
 def operation_button(operation):
-    return tk.Button(text=operation, bd=5, fg='red', command=lambda: add_operation(operation))
+    return tk.Button(text=operation, bd=5, fg='red', font=(20), command=lambda: add_operation(operation))
 
 
 def alike_button(operation):
@@ -50,7 +50,7 @@ def clear_button(operation):
 
 
 win = tk.Tk()
-win.geometry(f"300x260+100+200")
+win.geometry(f"720x300+100+200")
 win['bg'] = '#33ffe6'
 win.title('Калькулятор')
 
@@ -77,21 +77,21 @@ calc.grid(row=2, column=0, columnspan=3, sticky='we', padx=5)
 
 
 labelTop2 = tk.Label(win, text='В какой системе счисления хотите получить ответ:')
-labelTop2.grid(row=5, column=1, sticky='wens', padx=5, pady=7)
+labelTop2.grid(row=3, column=1, sticky='wens', padx=5, pady=7)
 
 
 combo2 = ttk.Combobox(win, values=nums)
-combo2.grid(row=6, column=1, sticky='wens', padx=5, pady=7)
+combo2.grid(row=4, column=1, sticky='wens', padx=5, pady=7)
 
 
-operation_button('+').grid(row=3, column=0, sticky='wens', padx=5, pady=7)
-operation_button('-').grid(row=3, column=1, sticky='wens', padx=5, pady=7)
-operation_button('*').grid(row=3, column=2, sticky='wens', padx=5, pady=7)
-operation_button('/').grid(row=4, column=0, sticky='wens', padx=5, pady=7)
+operation_button('+').grid(row=5, column=0, sticky='wens', padx=5, pady=7)
+operation_button('-').grid(row=5, column=1, sticky='wens', padx=5, pady=7)
+operation_button('*').grid(row=6, column=1, sticky='wens', padx=5, pady=7)
+operation_button('/').grid(row=6, column=0, sticky='wens', padx=5, pady=7)
 
 
-alike_button('=').grid(row=4, column=2, sticky='wens', padx=5, pady=7)
-clear_button('C').grid(row=4, column=1, sticky='wens', padx=5, pady=7)
+alike_button('=').grid(row=6, column=2, sticky='wens', padx=5, pady=7)
+clear_button('C').grid(row=5, column=2, sticky='wens', padx=5, pady=7)
 
 
 win.grid_columnconfigure(0, minsize=60)
